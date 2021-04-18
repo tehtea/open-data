@@ -51,7 +51,27 @@ These probabilities are then converted into `#define` statements to be consumed 
 3. To generate shots plot, run `python plot_shots.py`
 4. To generate probabilities for shots and passes faced/taken in each pitch zone by a team, run `python shots_and_passes_per_team.py`
 - The script supports command args too to vary the competition and team.
-- To generate the probabilities, 
+- E.g. The default is to get England's World Cup 2018 stats. (`python shots_and_passes_per_team.py`)
+- You can add prefixes to the `#define` statements generated too, e.g. `python shots_and_passes_per_team.py --team_prefix=teamTwo`
+
+### Permutations to Try (All from WC 2018 semis and final)
+
+**[France vs Belgium](https://bleacherreport.com/articles/2785263-france-vs-belgium-betting-odds-preview-world-cup-2018-prediction-analysis)**
+* `python shots_and_passes_per_team.py --team_name=france --team_prefix=teamOne`
+* `python shots_and_passes_per_team.py --team_name=belgium --team_prefix=teamTwo`
+
+**[Croatia vs England](https://www.skysports.com/football/croatia-vs-england/stats/385230)**
+* `python shots_and_passes_per_team.py --team_name=croatia --team_prefix=teamOne`
+* `python shots_and_passes_per_team.py --team_name=england --team_prefix=teamTwo`
+
+**[France vs Croatia](https://www.skysports.com/football/france-vs-croatia/stats/385232)**
+- :\
+* `python shots_and_passes_per_team.py --team_name=france --team_prefix=teamOne`\
+* `python shots_and_passes_per_team.py --team_name=croatia --team_prefix=teamTwo`
+
+**[Belgium vs England](https://www.skysports.com/football/belgium-vs-england/news/385231)**
+* `python shots_and_passes_per_team.py --team_name=belgium --team_prefix=teamOne`
+* `python shots_and_passes_per_team.py --team_name=england --team_prefix=teamTwo`
 
 **Original Repository README**
 

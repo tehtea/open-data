@@ -16,9 +16,9 @@ from absl import flags
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string('competition_name', 'FIFA World Cup', 'Name of competition the team is in.')
-flags.DEFINE_string('team_name', 'Arsenal', 'Team name that you want to look up.')
-flags.DEFINE_string('place', 'Home', 'Whether to look up stats for home or away.')
-flags.DEFINE_string('team_prefix', None, 'Prefix to set for probability output.')
+flags.DEFINE_string('team_name', 'England', 'Team name that you want to look up.')
+flags.DEFINE_string('place', 'both', 'Whether to look up stats for home, away or both.')
+flags.DEFINE_string('team_prefix', None, 'Prefix to set for probability output. Can be \'teamOne\' or \'teamTwo\'. Default is None')
 
 def weird_division(n, d):
   """
@@ -48,12 +48,15 @@ def is_team_and_place(matches):
       elif FLAGS.place.lower() == 'away':
         return d['away_team_name'].lower() == FLAGS.team_name.lower()
       elif FLAGS.place.lower() == 'both':
-        return d['home_team_name'].lower() == FLAGS.team_name.lower() or d['away_team_name'].lower() == FLAGS.team_name.lower()
+        return ('home_team_name' in d and d['home_team_name'].lower() == FLAGS.team_name.lower()) or \
+          ('away_team_name' in d and d['away_team_name'].lower() == FLAGS.team_name.lower())
       return False
   if FLAGS.place.lower() == 'home':
     matches = matches[matches['home_team'].apply(is_team)]
   elif FLAGS.place.lower() == 'away':
     matches = matches[matches['away_team'].apply(is_team)]
+  elif FLAGS.place.lower() == 'both':
+    matches = matches[matches['home_team'].apply(is_team) | matches['away_team'].apply(is_team)]
   return matches
 
 def check_shot(d):
@@ -190,6 +193,12 @@ def convert_to_probabilityStatements(zones_probs):
   return '\n'.join(statements)
 
 def main(argv):
+  print('See flags:')
+  print(f'Competition Name: {FLAGS.competition_name}')
+  print(f'Team Name: {FLAGS.team_name}')
+  print(f'Place: {FLAGS.place}')
+  print(f'Team Prefix: {FLAGS.team_prefix}')
+
   if FLAGS.place.lower() == 'both':
     assert FLAGS.team_prefix is not None, "Team prefix cannot be None if taking both home and away results to account!"
 
