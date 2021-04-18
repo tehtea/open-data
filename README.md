@@ -72,9 +72,7 @@ These probabilities are then converted into `#define` statements to be consumed 
 * `python shots_and_passes_per_team.py --team_name=belgium --team_prefix=teamOne`
 * `python shots_and_passes_per_team.py --team_name=england --team_prefix=teamTwo`
 
-**Original Repository README**
-
-# StatsBomb Open Data
+# Original Repository README: StatsBomb Open Data
 
 Welcome to the StatsBomb Open Data repository.
 
