@@ -65,8 +65,7 @@ These probabilities are then converted into `#define` statements to be consumed 
 * `python shots_and_passes_per_team.py --team_name=england --team_prefix=teamTwo`
 
 **[France vs Croatia](https://www.skysports.com/football/france-vs-croatia/stats/385232)**
-- :\
-* `python shots_and_passes_per_team.py --team_name=france --team_prefix=teamOne`\
+* `python shots_and_passes_per_team.py --team_name=france --team_prefix=teamOne`
 * `python shots_and_passes_per_team.py --team_name=croatia --team_prefix=teamTwo`
 
 **[Belgium vs England](https://www.skysports.com/football/belgium-vs-england/news/385231)**
